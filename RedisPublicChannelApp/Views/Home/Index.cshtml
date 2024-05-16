@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="d-flex justify-content-between">
+    <div class="channels-sect">
+        <form id="channelform" onsubmit="return false;">
+            <label for="nameinput">Channel Name:</label>
+            <input id="nameinput" type="text" placeholder="Enter channel name" required />
+            <button type="submit">Make Channel</button>
+        </form>
+        <div id="channels">
+            @{
+                if (ViewBag.ChannelNames != null)
+                {
+                    foreach (var item in ViewBag.ChannelNames as List<string>)
+                    {
+                        <h4 class="channel">@item</h4>
+                    }
+                }
+            }
+        </div>
+    </div>
+    <div class="right">
+        <h2 style="text-align:center" id="channelname"></h2>
+        <div id="messages"></div>
+        <div>
+            <form id="messageform" style="display:none" onsubmit="return false;">
+                <label for="messageinput">Message:</label>
+                <input id="messageinput" type="text" placeholder="Enter your message" required />
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
